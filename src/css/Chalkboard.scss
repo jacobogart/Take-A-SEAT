@@ -1,0 +1,25 @@
+.Chalkboard {
+  background-image: url("../images/chalkboard-background.jpg");
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  grid-area: "chalkboard";
+}
+
+@font-face {
+  font-family: "Chalky";
+  src: url("../images/DK\ Crayon\ Crumble.ttf");
+}
+
+.phraseContainer {
+  font-family: "Chalky", "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 24px;
+  color: white;
+  text-align: left;
+  letter-spacing: 1.5px;
+  height: 80%;
+  width: 80%;
+  margin: 100px 200px;
+}

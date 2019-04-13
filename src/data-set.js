@@ -42,46 +42,50 @@ const keywords = [
   {
     "word": "const",
     "nextWords": [
-      "mockData",
+      "mockData Name",
       "mockPropFunction"
     ],
-    "value": "const",
-    "isEditatble": false,
+    "value": "const ",
+    "isEditable": false,
     "phase": ["S"],
+    "details": "Declare a variable that cannot be reassigned",
     "id": 100
   },
   {
-    "word": "mockData",
+    "word": "mockData Name",
     "nextWords": [
-      "is assigned to",
+      "=",
       "}"
     ],
     "value": "mock-",
-    "isEditatble": true,
+    "isEditable": true,
     "phase": ["S"],
+    "details": "Variable name for your mock data",
     "id": 101
   },
   {
     "word": "mockPropFunction",
     "nextWords": [
-      "is assigned to",
+      "=",
       "}"
     ],
     "value": "mock-",
-    "isEditatble": true,
+    "isEditable": true,
     "phase": ["S"],
+    "details": "Name of mock function you will pass as props and/or spy on",
     "id": 102
   },
   {
-    "word": "is assigned to",
+    "word": "=",
     "nextWords": [
       "mockData value",
       "jest.fn()",
       "shallow",
     ],
-    "value": "=",
-    "isEditatble": false,
+    "value": " = ",
+    "isEditable": false,
     "phase": ["S"],
+    "details": "is assigned to",
     "id": 103
   }, 
   {
@@ -89,9 +93,10 @@ const keywords = [
     "nextWords": [
       "New Line"
     ],
-    "value": "-;",
-    "isEditatble": true,
+    "value": "",
+    "isEditable": true,
     "phase": ["S"],
+    "details": "Data that your Subject Under Test needs to opperate",
     "id": 104
   }, 
   {
@@ -100,8 +105,9 @@ const keywords = [
       "New Line"
     ],
     "value": "jest.fn();",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S"],
+    "details": "A mock function used to replace methods passed to the component as props",
     "id": 105
   },
   {
@@ -110,8 +116,9 @@ const keywords = [
       "Test Name",
     ],
     "value": "describe(",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S"],
+    "details": "Keyword that will allow you to label a testing block",
     "id": 106
   },
   {
@@ -120,8 +127,9 @@ const keywords = [
       "Arrow Function",
     ],
     "value": "-,",
-    "isEditatble": true,
+    "isEditable": true,
     "phase": ["S"],
+    "details": "A label for a testing block, most likely a component name or method",
     "id": 107
   },
   {
@@ -132,8 +140,9 @@ const keywords = [
       "expect"
     ],
     "value": "() => {",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S"],
+    "details": "Initializes an anonymous function and holds tesing logic",
     "id": 108
   },
   {
@@ -142,21 +151,23 @@ const keywords = [
       "wrapper",
     ],
     "value": "let",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S"],
+    "details": "Declare a variable that can be reassigned",
     "id": 109
   },
   {
     "word": "wrapper",
     "nextWords": [
-      "is assigned to",
+      "=",
       ";",
       ")",
       "state("
     ],
     "value": "wrapper",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S", "A"],
+    "details": "An object that surrounds the shallow rendering of an instance",
     "id": 110
   },
   {
@@ -165,8 +176,9 @@ const keywords = [
       "Arrow Function",
     ],
     "value": "beforeEach(",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S"],
+    "details": "A function that will becalled at the begining of each it block",
     "id": 111
   },
   {
@@ -175,29 +187,33 @@ const keywords = [
       "React Component Name"
     ],
     "value": "shallow(",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S"],
+    "details": "A function that will return a shallow rendering of a class instance",
     "id": 112
   },
   {
     "word": "React Component Name",
     "nextWords": [
-      "Prop Name"
+      "Prop Name",
+      "/>"
     ],
     "value": "<-",
-    "isEditatble": true,
+    "isEditable": true,
     "phase": ["S"],
+    "details": "The name of the React compnent you are testing",
     "id": 113
   },
   {
     "word": "Prop Name",
     "nextWords": [
-      "mockData",
+      "mockData Name",
       "mockPropFunction"
     ],
     "value": "-={",
-    "isEditatble": true,
+    "isEditable": true,
     "phase": ["S"],
+    "details": "Similar to a key, this is how you will access the prop's value in the child component",
     "id": 114
   },
   {
@@ -206,8 +222,9 @@ const keywords = [
       "/>"
     ],
     "value": "}",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S"],
+    "details": "Closing curly bracket",
     "id": 115
   },
   {
@@ -216,8 +233,9 @@ const keywords = [
       ")"
     ],
     "value": "/>",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S"],
+    "details": "Closes a component element",
     "id": 116
   },
   {
@@ -229,8 +247,9 @@ const keywords = [
       ".toEqual("
     ],
     "value": ")",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S"],
+    "details": "Closing parentheses",
     "id": 117
   },
   {
@@ -239,8 +258,9 @@ const keywords = [
       "Should Statement"
     ],
     "value": "it(",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S"],
+    "details": "Similar to describe, this will ititiate a new test",
     "id": 118
   },
   {
@@ -249,8 +269,9 @@ const keywords = [
       "Arrow Function"
     ],
     "value": "'-', ",
-    "isEditatble": true,
+    "isEditable": true,
     "phase": ["S"],
+    "details": "Text describing what you are testing, that will show in the terminal",
     "id": 119
   },
   {
@@ -259,8 +280,9 @@ const keywords = [
       "wrapper"
     ],
     "value": "expect(",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["A"],
+    "details": "Keyword that will start a line of assertion, setting the value you are testing",
     "id": 120
   },
   {
@@ -269,8 +291,9 @@ const keywords = [
       ";"
     ],
     "value": ".toMatchSnapshot()",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["A"],
+    "details": "Compares the wrapper instance to a stored snapshot",
     "id": 121
   },
   {
@@ -280,8 +303,9 @@ const keywords = [
       "stateKey"
     ],
     "value": ".state(",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["A"],
+    "details": "A method of wrapper that will return that wrapper's state object, or a single piece of state",
     "id": 122
   },
   {
@@ -290,8 +314,9 @@ const keywords = [
       ")"
     ],
     "value": "'-'",
-    "isEditatble": true,
+    "isEditable": true,
     "phase": ["A"],
+    "details": "An optional argument of the .state() method that returns that specific piece of state",
     "id": 123
   },
   {
@@ -301,8 +326,9 @@ const keywords = [
       "mockStateValue"
     ],
     "value": ".toEqual(",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["A"],
+    "details": "A method of expect that compares expect's argument to the argument of .toEqual()",
     "id": 124
   },
   {
@@ -311,8 +337,9 @@ const keywords = [
       ")"
     ],
     "value": "{-}",
-    "isEditatble": true,
+    "isEditable": true,
     "phase": ["A"],
+    "details": "A full copy of a components state, in object form, with the desired values changed",
     "id": 125
   },
   {
@@ -321,8 +348,9 @@ const keywords = [
       ")"
     ],
     "value": "-",
-    "isEditatble": true,
+    "isEditable": true,
     "phase": ["A"],
+    "details": "The data, either primative or complex, that you are evaluating the wrapper against",
     "id": 126
   },
   {
@@ -330,9 +358,10 @@ const keywords = [
     "nextWords": [
       ")"
     ],
-    "value": "<br />",
-    "isEditatble": false,
+    "value": "\n",
+    "isEditable": false,
     "phase": ["S", "E", "A", "T"],
+    "details": "Start a new line of testing",
     "id": 127
   },
   {
@@ -341,8 +370,9 @@ const keywords = [
       "New Line"
     ],
     "value": ";",
-    "isEditatble": false,
+    "isEditable": false,
     "phase": ["S", "E", "A", "T"],
+    "details": "Punctuation for ending complete code statements",
     "id": 128
   }
 ]

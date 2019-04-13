@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KeywordInfo should match snapshot 1`] = `
+<div>
+  <p>
+    Variable name for your mock data
+  </p>
+  <form
+    id="keywordForm"
+    onSubmit={[Function]}
+  >
+    <input
+      defaultValue="mock-"
+      type="text"
+    />
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;

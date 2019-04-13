@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AcronymInfo should match snapshot 1`] = `
+<div
+  className="letterHolder"
+>
+  <div>
+    <h3
+      className="restOfWord"
+      key="1"
+    >
+      e
+    </h3>
+    <h3
+      className="restOfWord"
+      key="2"
+    >
+      t
+    </h3>
+    <h3
+      className="restOfWord"
+      key="3"
+    >
+      u
+    </h3>
+    <h3
+      className="restOfWord"
+      key="4"
+    >
+      p
+    </h3>
+  </div>
+  <p
+    className="stageDescription"
+  >
+    Setup the conditions required to execute the action on your Subject Under Test
+  </p>
+</div>
+`;

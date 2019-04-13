@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class Chalkboard extends Component {
   render() {
     return (
-      <section>
-        <div>
+      <section className="Chalkboard">
+        <div className="phraseContainer">
           <p>{this.props.chalkboardPhrase}</p>
         </div>
       </section>
