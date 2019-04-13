@@ -1,0 +1,10 @@
+.keywordButton {
+  background-image: url('../images/pencil-button.png');
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  border: white;
+  &:hover {
+    transform: scale(1.5);
+  }
+}

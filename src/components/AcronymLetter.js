@@ -26,7 +26,10 @@ class AcronymLetter extends Component {
       >
         <h2>{letter}</h2>
         {this.state.showDetails && (
-          <AcronymInfo stageName={name} stageDescription={description} />
+          <AcronymInfo 
+            stageName={name} 
+            stageDescription={description} 
+          />
         )}
       </div>
     );

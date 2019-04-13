@@ -10,27 +10,33 @@ class Keyword extends Component {
     }
   }
 
-  selectWord = () => {
-    this.props.updateCurrentWord(this.props.keywordData)
-    this.props.addToChalkboard(this.props.keywordData.value)
+  selectWord = (value) => {
+    if (this.state.showDetails) {
+      this.props.updateCurrentWord(this.props.keywordData)
+      this.props.addToChalkboard(value)
+    }
+    this.setState({
+      showDetails: !this.state.showDetails
+    });
   }
 
   render() {
-    let { word, isEditable } = this.props.keywordData;
+    let { word } = this.props.keywordData;
     return (
       <div>
-        <button onClick={this.selectWord}>
+        <button 
+          className="keywordButton"
+          onClick={() => this.selectWord(this.props.keywordData.value)}
+        >
           {word}
         </button>
-        {this.state.showDetails && 
+        {this.state.showDetails && (
           <KeywordInfo
-            keyword={this.props.keyword}
-            isEditable={isEditable}
+            keywordData={this.props.keywordData}
+            selectWord={this.selectWord}
           />
-        }
+        )}
       </div>
-      
-
     );
   }
 }

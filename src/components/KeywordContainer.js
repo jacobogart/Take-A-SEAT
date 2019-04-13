@@ -11,6 +11,7 @@ class KeywordContainer extends Component {
   }
 
   updateCurrentWord = newWord => {
+    console.log(newWord);
     this.setState({
       currentWord: newWord
     });
@@ -18,9 +19,8 @@ class KeywordContainer extends Component {
   };
 
   render() {
-    console.log('nextWords', this.props.nextWords)
     return (
-      <section>
+      <section className="KeywordContainer">
         {this.props.nextWords.map(nextWord => (
           <Keyword
             key={nextWord.id}

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match snapshot 1`] = `
+<main>
+  <AcronymContainer
+    findNextWords={[Function]}
+    stages={
+      Array [
+        Object {
+          "description": "Setup the conditions required to execute the action on your Subject Under Test",
+          "id": 1,
+          "letter": "S",
+          "name": "Setup",
+          "starterWords": Array [
+            "describe",
+            "let",
+            "beforeEach",
+            "it",
+            "const",
+          ],
+        },
+        Object {
+          "description": "Execute some action on your Subject Under Test, usually by calling methods",
+          "id": 2,
+          "letter": "E",
+          "name": "Execution",
+          "starterWords": Array [
+            "wrapper",
+          ],
+        },
+        Object {
+          "description": "Assert that the action you did had the results you expect",
+          "id": 3,
+          "letter": "A",
+          "name": "Assertion",
+          "starterWords": Array [
+            "expect",
+          ],
+        },
+        Object {
+          "description": "Clean up any resources you used in your test (this usully happens automatically)",
+          "id": 4,
+          "letter": "T",
+          "name": "Tear Down",
+        },
+      ]
+    }
+  />
+</main>
+`;

@@ -1,10 +1,14 @@
+.AcronymInfo {
+  position: absolute;
+  z-index: 10;
+  height: 500%;
+  display: flex;
+}
+
+
 .restOfWord {
   font-size: 30px;
   margin: 0;
-}
-
-.letterHolder {
-  display: flex;
 }
 
 .stageDescription {

@@ -2,13 +2,26 @@ import React, { Component } from 'react';
 import '../css/KeywordInfo.scss';
 
 class KeywordInfo extends Component {
+  
+  submitValue = e => {
+    e.preventDefault();
+    this.props.selectWord(e.target.querySelector("input").value);
+  }
+
   render() {
-    let { details } = this.props.keyword;
+    let { details, isEditable, value } = this.props.keywordData;
     return (
-      <div>
+      <div className="KeywordInfo">
         <p>{details}</p>
-        {this.props.isEditable && 
-          <input type="text" />
+        {isEditable && 
+          <form 
+            id="keywordForm"
+            onSubmit={this.submitValue}
+          >
+            <input type="text" defaultValue={value}/>
+            <button type="submit">Submit</button>
+          </form>
+          
         }
       </div>
 
