@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import '../css/Chalkboard.scss';
 
 class Chalkboard extends Component {
   render() {
     return (
-
+      <section>
+        <div>
+          <p>{this.props.chalkboardPhrase}</p>
+        </div>
+      </section>
     );
   }
 }
