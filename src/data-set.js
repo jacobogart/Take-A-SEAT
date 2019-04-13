@@ -1,3 +1,43 @@
+const stages = [
+  {
+    "name": "Setup",
+    "letter": "S",
+    "description": "Setup the conditions required to execute the action on your Subject Under Test",
+    "starterWords": [
+      "describe",
+      "let",
+      "beforeEach",
+      "it",
+      "const"
+    ],
+    "id": 1
+  },
+  {
+    "name": "Execution",
+    "letter": "E",
+    "description": "Execute some action on your Subject Under Test, usually by calling methods",
+    "starterWords": [
+      "wrapper"
+    ],
+    "id": 2
+  },
+  {
+    "name": "Assertion",
+    "letter": "A",
+    "description": "Assert that the action you did had the results you expect",
+    "starterWords": [
+      "expect"
+    ],
+    "id": 3,
+  },
+  {
+    "name": "Tear Down",
+    "letter": "T",
+    "description": "Clean up any resources you used in your test (this usully happens automatically)",
+    "id": 4
+  }
+
+]
 const keywords = [
   {
     "word": "const",
@@ -7,30 +47,33 @@ const keywords = [
     ],
     "value": "const",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 100
   },
   {
     "word": "mockData",
     "nextWords": [
-      "=",
+      "is assigned to",
       "}"
     ],
     "value": "mock-",
     "isEditatble": true,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 101
   },
   {
     "word": "mockPropFunction",
     "nextWords": [
-      "=",
+      "is assigned to",
       "}"
     ],
     "value": "mock-",
     "isEditatble": true,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 102
   },
   {
-    "word": "=",
+    "word": "is assigned to",
     "nextWords": [
       "mockData value",
       "jest.fn()",
@@ -38,47 +81,48 @@ const keywords = [
     ],
     "value": "=",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 103
   }, 
   {
     "word": "mockData value",
     "nextWords": [
-      "",
-      ""
+      "New Line"
     ],
     "value": "-;",
     "isEditatble": true,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 104
   }, 
   {
     "word": "jest.fn()",
     "nextWords": [
-      "",
-      ""
+      "New Line"
     ],
     "value": "jest.fn();",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 105
   },
   {
     "word": "describe",
     "nextWords": [
       "Test Name",
-      ""
     ],
-    "value": "Describe(",
+    "value": "describe(",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 106
   },
   {
     "word": "Test Name",
     "nextWords": [
       "Arrow Function",
-      ""
     ],
     "value": "-,",
     "isEditatble": true,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 107
   },
   {
     "word": "Arrow Function",
@@ -89,59 +133,61 @@ const keywords = [
     ],
     "value": "() => {",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 108
   },
   {
     "word": "let",
     "nextWords": [
       "wrapper",
-      ""
     ],
     "value": "let",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 109
   },
   {
     "word": "wrapper",
     "nextWords": [
-      "=",
+      "is assigned to",
       ";",
       ")",
-      ".state()"
+      "state("
     ],
     "value": "wrapper",
     "isEditatble": false,
-    "phase": ["S", "A"]
+    "phase": ["S", "A"],
+    "id": 110
   },
   {
     "word": "beforeEach",
     "nextWords": [
       "Arrow Function",
-      ""
     ],
     "value": "beforeEach(",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 111
   },
   {
     "word": "shallow",
     "nextWords": [
-      "React Component Name",
-      ""
+      "React Component Name"
     ],
     "value": "shallow(",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 112
   },
   {
     "word": "React Component Name",
     "nextWords": [
-      "Prop Name",
-      ""
+      "Prop Name"
     ],
     "value": "<-",
     "isEditatble": true,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 113
   },
   {
     "word": "Prop Name",
@@ -151,7 +197,8 @@ const keywords = [
     ],
     "value": "-={",
     "isEditatble": true,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 114
   },
   {
     "word": "}",
@@ -160,7 +207,8 @@ const keywords = [
     ],
     "value": "}",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 115
   },
   {
     "word": "/>",
@@ -169,7 +217,8 @@ const keywords = [
     ],
     "value": "/>",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 116
   },
   {
     "word": ")",
@@ -181,7 +230,8 @@ const keywords = [
     ],
     "value": ")",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 117
   },
   {
     "word": "it",
@@ -190,7 +240,8 @@ const keywords = [
     ],
     "value": "it(",
     "isEditatble": false,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 118
   },
   {
     "word": "Should Statement",
@@ -199,7 +250,8 @@ const keywords = [
     ],
     "value": "'-', ",
     "isEditatble": true,
-    "phase": ["S"]
+    "phase": ["S"],
+    "id": 119
   },
   {
     "word": "expect",
@@ -208,7 +260,8 @@ const keywords = [
     ],
     "value": "expect(",
     "isEditatble": false,
-    "phase": ["A"]
+    "phase": ["A"],
+    "id": 120
   },
   {
     "word": ".toMatchSnapshot()",
@@ -217,17 +270,19 @@ const keywords = [
     ],
     "value": ".toMatchSnapshot()",
     "isEditatble": false,
-    "phase": ["A"]
+    "phase": ["A"],
+    "id": 121
   },
   {
-    "word": ".state(",
+    "word": "state(",
     "nextWords": [
       ")",
       "stateKey"
     ],
     "value": ".state(",
     "isEditatble": false,
-    "phase": ["A"]
+    "phase": ["A"],
+    "id": 122
   },
   {
     "word": "stateKey",
@@ -236,7 +291,8 @@ const keywords = [
     ],
     "value": "'-'",
     "isEditatble": true,
-    "phase": ["A"]
+    "phase": ["A"],
+    "id": 123
   },
   {
     "word": ".toEqual(",
@@ -246,7 +302,8 @@ const keywords = [
     ],
     "value": ".toEqual(",
     "isEditatble": false,
-    "phase": ["A"]
+    "phase": ["A"],
+    "id": 124
   },
   {
     "word": "mockStateObject",
@@ -255,7 +312,8 @@ const keywords = [
     ],
     "value": "{-}",
     "isEditatble": true,
-    "phase": ["A"]
+    "phase": ["A"],
+    "id": 125
   },
   {
     "word": "mockStateValue",
@@ -264,8 +322,32 @@ const keywords = [
     ],
     "value": "-",
     "isEditatble": true,
-    "phase": ["A"]
+    "phase": ["A"],
+    "id": 126
+  },
+  {
+    "word": "New Line",
+    "nextWords": [
+      ")"
+    ],
+    "value": "<br />",
+    "isEditatble": false,
+    "phase": ["S", "E", "A", "T"],
+    "id": 127
+  },
+  {
+    "word": ";",
+    "nextWords": [
+      "New Line"
+    ],
+    "value": ";",
+    "isEditatble": false,
+    "phase": ["S", "E", "A", "T"],
+    "id": 128
   }
 ]
 
-export default keywords;
+module.exports = {
+  stages,
+  keywords
+};
