@@ -13,7 +13,7 @@ class Keyword extends Component {
   selectWord = (value) => {
     if (this.state.showDetails) {
       this.props.updateCurrentWord(this.props.keywordData)
-      this.props.addToChalkboard(value)
+      this.props.chalkboardChecker(value)
     }
     this.setState({
       showDetails: !this.state.showDetails

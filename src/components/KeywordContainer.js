@@ -26,7 +26,7 @@ class KeywordContainer extends Component {
             key={nextWord.id}
             keywordData={nextWord}
             updateCurrentWord={this.updateCurrentWord}
-            addToChalkboard={this.props.addToChalkboard}
+            chalkboardChecker={this.props.chalkboardChecker}
           />
         ))}
       </section>

@@ -11,13 +11,14 @@ class App extends Component {
     this.state = {
       showKeywords: false,
       keywords: keywords,
-      chalkboardPhrase: '',
+      currentPhrase: "",
       stages: stages,
       nextWords: null,
+      chalkboardPhrases: [],
     };
   }
 
-  findNextWords = (words) => {
+  findNextWords = words => {
     let newNextWords = words.map(nextWord =>
       this.state.keywords.find(keyword => keyword.word === nextWord)
     );
@@ -27,12 +28,29 @@ class App extends Component {
     });
   };
 
-  addToChalkboard = keywordValue => {
-    let newPhrase = this.state.chalkboardPhrase
-    ? this.state.chalkboardPhrase.concat("", keywordValue)
-    : keywordValue;
+  chalkboardChecker = keywordValue => {
+    if(keywordValue === "New Line") {
+      this.newChalkboardLine();
+    } else {
+      this.addToChalkboard(keywordValue);
+    }
+  }
+
+  newChalkboardLine = () => {
+    let newPhrase = this.state.chalkboardPhrases;
+    newPhrase.push(this.state.currentPhrase);
     this.setState({
-      chalkboardPhrase: newPhrase
+      chalkboardPhrases: newPhrase,
+      currentPhrase: ''
+    })
+  }
+
+  addToChalkboard = keywordValue => {
+    let newPhrase = this.state.currentPhrase
+      ? this.state.currentPhrase.concat("", keywordValue)
+      : keywordValue;
+    this.setState({
+      currentPhrase: newPhrase
     });
   };
 
@@ -46,13 +64,16 @@ class App extends Component {
         {this.state.showKeywords && (
           <KeywordContainer
             keywords={this.state.keywords}
-            addToChalkboard={this.addToChalkboard}
+            chalkboardChecker={this.chalkboardChecker}
             nextWords={this.state.nextWords}
             findNextWords={this.findNextWords}
           />
         )}
         {this.state.showKeywords && (
-          <Chalkboard chalkboardPhrase={this.state.chalkboardPhrase} />
+          <Chalkboard 
+            currentPhrase={this.state.currentPhrase}
+            chalkboardPhrases={this.state.chalkboardPhrases}
+          />
         )}
       </main>
     );
