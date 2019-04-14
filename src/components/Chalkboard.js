@@ -5,7 +5,10 @@ class Chalkboard extends Component {
     return (
       <section className="Chalkboard">
         <div className="phraseContainer">
-          <p>{this.props.chalkboardPhrase}</p>
+          {this.props.chalkboardPhrases.map(phrase =>
+            <p>{phrase}</p>
+          )}
+          <p>{this.props.currentPhrase}</p>
         </div>
       </section>
     );
