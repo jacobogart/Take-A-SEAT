@@ -11,7 +11,6 @@ class KeywordContainer extends Component {
   }
 
   updateCurrentWord = newWord => {
-    console.log(newWord);
     this.setState({
       currentWord: newWord
     });

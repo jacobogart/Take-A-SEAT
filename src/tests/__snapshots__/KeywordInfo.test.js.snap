@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KeywordInfo should match snapshot 1`] = `
-<div>
+<div
+  className="KeywordInfo"
+>
   <p>
     Variable name for your mock data
   </p>
@@ -19,5 +21,15 @@ exports[`KeywordInfo should match snapshot 1`] = `
       Submit
     </button>
   </form>
+</div>
+`;
+
+exports[`KeywordInfo should not have a form if the keyword is not editable 1`] = `
+<div
+  className="KeywordInfo"
+>
+  <p>
+    Closes a component element
+  </p>
 </div>
 `;

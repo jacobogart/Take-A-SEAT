@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chalkboard should match snapshot 1`] = `
+<section
+  className="Chalkboard"
+>
+  <div
+    className="phraseContainer"
+  >
+    <p
+      key="0"
+    >
+      let const mockData = {};
+    </p>
+    <p
+      key="1"
+    >
+      let wrapper = shallow(
+    </p>
+    <p>
+      &lt;Chalkboard
+    </p>
+  </div>
+</section>
+`;
