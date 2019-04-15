@@ -4,11 +4,7 @@ import AcronymLetter from './AcronymLetter';
 class AcronymContainer extends Component {
   render() {
     return (
-      <section 
-        className="AcronymContainer"
-        onMouseOver={this.toggleShowDetails}
-        onMouseLeave={this.toggleShowDetails}
-      >
+      <section className="AcronymContainer">
         {this.props.stages.map(stage =>
           <AcronymLetter 
             key={stage.id}

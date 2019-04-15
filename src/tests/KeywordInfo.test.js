@@ -48,5 +48,25 @@ describe('KeywordInfo', () => {
     wrapper.instance().submitValue(mockEvent);
     expect(mockSelectWord).toHaveBeenCalled();
   });
+
+  it('should not have a form if the keyword is not editable', () => {
+    let mockUneditableData = {
+      "word": "/>",
+      "nextWords": [
+        "New Line"
+      ],
+      "value": "/>",
+      "isEditable": false,
+      "phase": ["S"],
+      "details": "Closes a component element",
+      "id": 116
+    };
+    let wrapper = shallow(
+      <KeywordInfo
+        keywordData={mockUneditableData}
+        selectWord={mockSelectWord}
+      />);
+    expect(wrapper).toMatchSnapshot();
+  })
     
 });

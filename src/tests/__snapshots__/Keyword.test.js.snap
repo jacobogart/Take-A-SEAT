@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Keyword should match snapshot 1`] = `
+<div>
+  <button
+    className="keywordButton"
+    onClick={[Function]}
+  >
+    wrapper
+  </button>
+</div>
+`;
+
+exports[`Keyword should render keywordInfo if showDetails is true 1`] = `
+<div>
+  <button
+    className="keywordButton"
+    onClick={[Function]}
+  >
+    wrapper
+  </button>
+  <KeywordInfo
+    keywordData={
+      Object {
+        "details": "An object that surrounds the shallow rendering of an instance",
+        "id": 110,
+        "isEditable": false,
+        "nextWords": Array [
+          "=",
+          ";",
+          ")",
+          "state(",
+        ],
+        "phase": Array [
+          "S",
+          "A",
+        ],
+        "value": "wrapper",
+        "word": "wrapper",
+      }
+    }
+    selectWord={[Function]}
+  />
+</div>
+`;
