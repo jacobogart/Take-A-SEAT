@@ -31,7 +31,6 @@ class App extends Component {
 
 
   findNextWords = keywordData => {
-    console.log(keywordData);
     let shallowNextWords = keywordData.nextWords || keywordData.starterWords;
     if (keywordData.word === "New Line") {
       shallowNextWords = this.newLineTestRunner(shallowNextWords, newLineChecks);
