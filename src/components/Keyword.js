@@ -9,10 +9,10 @@ class Keyword extends Component {
     }
   }
 
-  selectWord = (keywordData) => {
+  selectWord = (value, keywordData) => {
     if (this.state.showDetails) {
       this.props.findNextWords(keywordData);
-      this.props.chalkboardChecker(keywordData.value);
+      this.props.chalkboardChecker(value);
     }
     this.toggleShowDetails();
   }
@@ -27,9 +27,11 @@ class Keyword extends Component {
     let { word } = this.props.keywordData;
     return (
       <div>
-        <button 
+        <button
           className="keywordButton"
-          onClick={() => this.selectWord(this.props.keywordData)}
+          onClick={() =>
+            this.selectWord(this.props.keywordData.value, this.props.keywordData)
+          }
         >
           {word}
         </button>
