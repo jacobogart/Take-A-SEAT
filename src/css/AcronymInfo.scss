@@ -1,17 +1,46 @@
 .AcronymInfo {
   position: absolute;
   z-index: 10;
-  height: 500%;
+  height: 140%;
   display: flex;
+  border-radius: 10%;
+  font-family: $script-font;
+  opacity:0.9;
+  padding-top: 6px;
+}
+
+.stageS,
+.stageE {
+  left: 15px;
+  background-image: url('../images/paper-background.jpg');
+  .stageDescription {
+    text-align: left;
+  }
+}
+
+.stageA,
+.stageT {
+  flex-direction: row-reverse;
+  right: 25px;
+  background-image: url('../images/paper-background-flip.jpg');
+  background-position: top right;
+  .stageDescription {
+    text-align: right;
+  }
 }
 
 
 .restOfWord {
-  font-size: 30px;
-  margin: 0;
+  font-size: 31px;
+  line-height: 34px;
+  font-weight: bold;
+  margin: -8px 15px;
 }
 
 .stageDescription {
-  font-size: 20px;
+  font-size: 26px;
   width: 200px;
+  padding: 3px;
+  margin-top: 45px;
+  line-height: 27px;
 }

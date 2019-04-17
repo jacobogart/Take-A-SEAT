@@ -1,10 +1,15 @@
 .keywordButton {
   background-image: url('../images/pencil-button.png');
   background-size: cover;
+  font-family: 'Roboto Condensed', sans-serif;
   background-position: center;
-  width: 200px;
+  color: #157d07;
+  background-color: transparent;
+  width: 240px;
   border: white;
+  margin: 20px;
   &:hover {
     transform: scale(1.5);
+    cursor: pointer;
   }
 }

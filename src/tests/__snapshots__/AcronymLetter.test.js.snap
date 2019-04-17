@@ -25,6 +25,7 @@ exports[`AcronymInfo should render AcronymInfo when showDetails is true 1`] = `
   </h2>
   <AcronymInfo
     stageDescription="Setup the conditions required to execute the action on your Subject Under Test"
+    stageLetter="S"
     stageName="Setup"
   />
 </div>

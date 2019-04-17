@@ -2,26 +2,43 @@ import React, { Component } from 'react';
 import AcronymContainer from './AcronymContainer';
 import KeywordContainer from './KeywordContainer';
 import Chalkboard from './Chalkboard';
-import { keywords } from '../data-set';
-import { stages } from "../data-set";
+import newLineChecks from '../newLineChecks';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       showKeywords: false,
-      keywords: keywords,
+      keywords: null,
       currentPhrase: "",
-      stages: stages,
+      stages: null,
       nextWords: null,
       chalkboardPhrases: [],
+      chalkboardLines: 0
     };
+  };
+
+  componentDidMount() {
+    const url = 'https://fe-apps.herokuapp.com/api/v1/memoize/1901/jacobogart/'
+    const endPoints = ['stages', 'keywords']
+    endPoints.forEach(endPoint => {
+      fetch(`${url}${endPoint}`)
+        .then(response => response.json())
+        .then(data => this.setState({ [endPoint]: data[endPoint] }))
+        .catch(err => console.log(err));
+    })
   }
 
-  findNextWords = words => {
-    let newNextWords = words.map(nextWord =>
+
+  findNextWords = keywordData => {
+    let shallowNextWords = keywordData.nextWords || keywordData.starterWords;
+    if (keywordData.word === "New Line") {
+      shallowNextWords = this.newLineTests(shallowNextWords);
+    }
+    let newNextWords = shallowNextWords.map(nextWord =>
       this.state.keywords.find(keyword => keyword.word === nextWord)
     );
+    
     this.setState({
       nextWords: newNextWords,
       showKeywords: true
@@ -34,16 +51,42 @@ class App extends Component {
     } else {
       this.addToChalkboard(keywordValue);
     }
-  }
+  };
 
   newChalkboardLine = () => {
     let newPhrase = this.state.chalkboardPhrases;
     newPhrase.push(this.state.currentPhrase);
     this.setState({
       chalkboardPhrases: newPhrase,
-      currentPhrase: ''
-    })
+      currentPhrase: "",
+      chalkboardLines: this.state.chalkboardLines + 1
+    });
+  };
+
+  newLineTests = (nextWords) => {
+    let workingNextWords = nextWords;
+    newLineChecks.forEach(check => {
+      let {find, ifFound, remove } = check;
+      workingNextWords = this.newLineTest(workingNextWords, find, ifFound, remove); 
+    });              
+    return workingNextWords;
+  };
+
+  newLineTest = (workingNextWords, targetPhrase, boolean, removePhrase) => {
+    let localNextwords = workingNextWords;
+    if (this.newLineSome(targetPhrase) === boolean) {
+      var index = localNextwords.indexOf(removePhrase);
+      index >= 0 && localNextwords.splice(index, 1);
+    } 
+    return localNextwords;
   }
+
+  newLineSome = (targetPhrase) => {
+    return this.state.chalkboardPhrases.some(
+      chalkPhrase =>
+        chalkPhrase.includes(targetPhrase)) ||
+      this.state.currentPhrase.includes(targetPhrase);
+  };
 
   addToChalkboard = keywordValue => {
     let newPhrase = this.state.currentPhrase
@@ -57,9 +100,13 @@ class App extends Component {
   render() {
     return (
       <main className="App">
+        {!this.state.showKeywords && 
+          <h2 className="welcome-message">Take a</h2>
+        }
         <AcronymContainer
           stages={this.state.stages}
           findNextWords={this.findNextWords}
+          showKeywords={this.state.showKeywords}
         />
         {this.state.showKeywords && (
           <KeywordContainer
@@ -70,7 +117,7 @@ class App extends Component {
           />
         )}
         {this.state.showKeywords && (
-          <Chalkboard 
+          <Chalkboard
             currentPhrase={this.state.currentPhrase}
             chalkboardPhrases={this.state.chalkboardPhrases}
           />

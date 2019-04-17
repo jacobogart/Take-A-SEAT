@@ -1,18 +1,78 @@
 import React from 'react';
 import App from '../components/App';
 import { shallow } from "enzyme";
-import { keywords } from "../data-set";
-import { stages } from "../data-set";
-
 
 const defaultState = {
   showKeywords: false,
-  keywords: keywords,
+  keywords: null,
   currentPhrase: "",
-  stages: stages,
+  stages: null,
   nextWords: null,
   chalkboardPhrases: [],
+  chalkboardLines: 0
 };
+
+const mockKeywords = [
+  {
+    "word": "Prop Name",
+    "nextWords": [
+      "mockData Name",
+      "mockPropFunction"
+    ],
+    "value": "yourPropName={",
+    "isEditable": true,
+    "phase": ["S"],
+    "details": "This is how you will access the prop's value in the child component",
+    "id": 114
+    },
+    {
+    "word": "mockData Name",
+    "nextWords": [
+      "=",
+      "}"
+    ],
+    "value": "mock-",
+    "isEditable": true,
+    "phase": ["S"],
+    "details": "Variable name for your mock data",
+    "id": 101
+    },
+    {
+    "word": "mockPropFunction",
+    "nextWords": [
+      "=",
+      "}"
+    ],
+    "value": "mock-",
+    "isEditable": true,
+    "phase": ["S"],
+    "details": "Name of mock function you will pass as props and/or spy on",
+    "id": 102
+  },
+  {
+    "word": "New Line",
+    "nextWords": [
+      ")",
+      "let",
+      "wrapper",
+      "expect",
+      "beforeEach",
+      "Prop Name",
+      "/>",
+      "}",
+      "describe",
+      "Component Name",
+      "it"
+    ],
+    "value": "New Line",
+    "isEditable": false,
+    "phase": ["S", "E", "A", "T"],
+    "details": "Start a new line of testing",
+    "id": 127
+  },
+
+]
+;
 
 describe('App', () => {
   let wrapper;
@@ -36,46 +96,22 @@ describe('App', () => {
 
   describe('findNextWords', () => {
     it('should set nextWords to an array of keyword objects', () => {
-      wrapper.instance().findNextWords([
-        "mockData Name",
-        "mockPropFunction"
-      ]);
-      expect(wrapper.state('nextWords')).toEqual([
-        {
-          "word": "mockData Name",
-          "nextWords": [
-            "=",
-            "}"
-          ],
-          "value": "mock-",
-          "isEditable": true,
-          "phase": ["S"],
-          "details": "Variable name for your mock data",
-          "id": 101
-        },
-        {
-          "word": "mockPropFunction",
-          "nextWords": [
-            "=",
-            "}"
-          ],
-          "value": "mock-",
-          "isEditable": true,
-          "phase": ["S"],
-          "details": "Name of mock function you will pass as props and/or spy on",
-          "id": 102
-        },
-      ]);
+      wrapper.instance().setState({ keywords: mockKeywords })
+      wrapper.instance().findNextWords(mockKeywords[0]);
+      expect(wrapper.state('nextWords')).toEqual([mockKeywords[1], mockKeywords[2]]);
     });
 
     it('should update showKeywords to true', () => {
-      expect(wrapper.state()).toEqual(defaultState);
-      wrapper.instance().findNextWords([
-        "mockData Name",
-        "mockPropFunction"
-      ]);
+      wrapper.instance().setState({ keywords: mockKeywords })
+      wrapper.instance().findNextWords(mockKeywords[0]);
       expect(wrapper.state('showKeywords')).toEqual(true);
-    })
+    });
+    it("should invoke newLineTests if the keyword is New Line", () => {
+      wrapper.instance().setState({ keywords: mockKeywords });
+      jest.spyOn(wrapper.instance(), "newLineTests");
+      wrapper.instance().findNextWords(mockKeywords[3]);
+      expect(wrapper.instance().newLineTests).toHaveBeenCalled();
+    });
   });
 
   describe('chalkboardChecker', () => {

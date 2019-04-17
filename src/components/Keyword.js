@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import KeywordInfo from './KeywordInfo';
-import '../css/Keyword.scss';
 
 class Keyword extends Component {
   constructor(props) {
@@ -10,11 +9,15 @@ class Keyword extends Component {
     }
   }
 
-  selectWord = (value) => {
+  selectWord = (keywordData) => {
     if (this.state.showDetails) {
-      this.props.updateCurrentWord(this.props.keywordData)
-      this.props.chalkboardChecker(value)
+      this.props.findNextWords(keywordData);
+      this.props.chalkboardChecker(keywordData.value);
     }
+    this.toggleShowDetails();
+  }
+
+  toggleShowDetails = () => {
     this.setState({
       showDetails: !this.state.showDetails
     });
@@ -26,7 +29,7 @@ class Keyword extends Component {
       <div>
         <button 
           className="keywordButton"
-          onClick={() => this.selectWord(this.props.keywordData.value)}
+          onClick={() => this.selectWord(this.props.keywordData)}
         >
           {word}
         </button>

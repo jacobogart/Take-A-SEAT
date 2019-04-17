@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Chalky";
+  src: url("../images/DK\ Crayon\ Crumble.ttf");
+}
+
+@font-face {
+  font-family: "Varsity";
+  src: url("../images/varsity_regular.ttf");
+}
+
+
+$script-font: "Chalky", "Comic Sans MS", "Comic Sans", cursive;
+$header-font: "Varsity", "Times New Roman", serif;

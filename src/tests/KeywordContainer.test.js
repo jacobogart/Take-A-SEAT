@@ -34,25 +34,4 @@ describe('KeywordContainer', () => {
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('should have a default state', () => {
-    expect(wrapper.state()).toEqual({ currentWord: null });
-  })
-
-  describe('updateCurrentWord', () => {
-    it('should update state when updateCurrentWord is called', () => {
-      expect(wrapper.state('currentWord')).toEqual(null);
-      wrapper.instance().updateCurrentWord(mockNextWords[0]);
-      expect(wrapper.state("currentWord")).toEqual(mockNextWords[0]);
-    });
-
-    it('should invoke findNextWords when updateCurrentWord is called', () => {
-      wrapper.instance().updateCurrentWord(mockNextWords[0]);
-      expect(mockFindNextWords).toHaveBeenCalled();
-      expect(mockFindNextWords).toHaveBeenCalledWith([
-        "mockData Name",
-        "mockPropFunction"
-      ]);
-    });
-  });
 })
