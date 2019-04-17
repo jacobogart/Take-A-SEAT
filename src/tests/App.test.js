@@ -70,9 +70,20 @@ const mockKeywords = [
     "details": "Start a new line of testing",
     "id": 127
   },
+];
 
-]
-;
+const mockNewLineChecks = [
+  {
+    "find": "beforeEach",
+    "ifFound": true,
+    "remove": "beforeEach"
+  },
+  {
+    "find": "<",
+    "ifFound": false,
+    "remove": "/>"
+  }
+];
 
 describe('App', () => {
   let wrapper;
@@ -108,9 +119,9 @@ describe('App', () => {
     });
     it("should invoke newLineTests if the keyword is New Line", () => {
       wrapper.instance().setState({ keywords: mockKeywords });
-      jest.spyOn(wrapper.instance(), "newLineTests");
+      jest.spyOn(wrapper.instance(), "newLineTestRunner");
       wrapper.instance().findNextWords(mockKeywords[3]);
-      expect(wrapper.instance().newLineTests).toHaveBeenCalled();
+      expect(wrapper.instance().newLineTestRunner).toHaveBeenCalled();
     });
   });
 
@@ -153,6 +164,48 @@ describe('App', () => {
       expect(wrapper.state("currentPhrase")).toEqual("mock current phrase");
       instance.newChalkboardLine();
       expect(wrapper.state("currentPhrase")).toEqual('');
+    });
+  });
+
+  describe("newLineTestRunner", () => {
+    it("should invoke newLineTest for each object in newLineChecks", () => {
+      jest.spyOn(wrapper.instance(), 'newLineTest');
+      wrapper.instance().newLineTestRunner([], mockNewLineChecks);
+      expect(wrapper.instance().newLineTest).toHaveBeenCalled();
+      expect(wrapper.instance().newLineTest.mock.calls.length).toBe(2);
+    });
+
+    it('should return some version of nextWords', () => {
+      wrapper.instance().newLineTestRunner(['test'], mockNewLineChecks);
+      expect(
+        wrapper.instance().newLineTestRunner(['test'], mockNewLineChecks)
+      ).toEqual(["test"]);
+    })
+  });
+
+  describe('newLineTest', () => {
+    it('should return a copy of workingNextWords if there was nothing to splice', () => {
+      let { find, ifFound, remove } = mockNewLineChecks[0];
+      let workingNextWords = ['test1', 'test2', 'test3']
+      expect(wrapper.instance().newLineTest(workingNextWords, find, ifFound, remove)).toEqual(workingNextWords);
+    });
+
+    it('should splice out a keyword if it matches a test', () => {
+      let { find, ifFound, remove } = mockNewLineChecks[0];
+      let workingNextWords = ['beforeEach', 'test1', 'test2'];
+      wrapper.instance().setState({ currentPhrase: 'beforeEach test'})
+      expect(wrapper.instance().newLineTest(workingNextWords, find, ifFound, remove)).toEqual(['test1', 'test2']);
+    });
+  });
+
+  describe('newLineSome', () => {
+    it('should return false if the targetPhrase is not in the chalkboard', () => {
+      expect(wrapper.instance().newLineSome('beforeEach')).toEqual(false);
+    });
+
+    it("should return true if the targetPhrase is in the chalkboard", () => {
+      wrapper.instance().setState({ currentPhrase: 'beforeEach test' })
+      expect(wrapper.instance().newLineSome("beforeEach")).toEqual(true);
     });
   });
 

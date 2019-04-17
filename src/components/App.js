@@ -33,7 +33,7 @@ class App extends Component {
   findNextWords = keywordData => {
     let shallowNextWords = keywordData.nextWords || keywordData.starterWords;
     if (keywordData.word === "New Line") {
-      shallowNextWords = this.newLineTests(shallowNextWords);
+      shallowNextWords = this.newLineTestRunner(shallowNextWords, newLineChecks);
     }
     let newNextWords = shallowNextWords.map(nextWord =>
       this.state.keywords.find(keyword => keyword.word === nextWord)
@@ -63,7 +63,7 @@ class App extends Component {
     });
   };
 
-  newLineTests = (nextWords) => {
+  newLineTestRunner = (nextWords, newLineChecks) => {
     let workingNextWords = nextWords;
     newLineChecks.forEach(check => {
       let {find, ifFound, remove } = check;
