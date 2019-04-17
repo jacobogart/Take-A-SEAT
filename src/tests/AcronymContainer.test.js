@@ -1,16 +1,16 @@
 import React from "react";
 import AcronymContainer from "../components/AcronymContainer";
 import { shallow } from "enzyme";
-import { stages } from "../data-set";
 
 const mockFindNextWords = jest.fn();
+const mockStages = [];
 
 describe('AcronymContainer', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
       <AcronymContainer
-        stages={stages}
+        stages={mockStages}
         findNextWords={mockFindNextWords}
       />
     );

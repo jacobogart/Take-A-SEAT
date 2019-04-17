@@ -51,18 +51,21 @@ describe('Keyword', () => {
   });
 
   describe('selectWord', () => {
-    const mockValue = "const";
     it('should toggle showDetails when selectWord is called', () => {
       expect(wrapper.state('showDetails')).toEqual(false);
-      wrapper.instance().selectWord(mockValue);
+      wrapper.instance().selectWord(mockKeywordData.value, mockKeywordData);
       expect(wrapper.state('showDetails')).toEqual(true);
-      wrapper.instance().selectWord(mockValue);
+      wrapper
+        .instance()
+        .selectWord(mockKeywordData.value, mockKeywordData);
       expect(wrapper.state('showDetails')).toEqual(false);
     })
 
     it('should invoke updateCurrentWord if showDetails is true', () => {
       wrapper.instance().setState({ showDetails: true});
-      wrapper.instance().selectWord(mockKeywordData);
+      wrapper
+        .instance()
+        .selectWord(mockKeywordData.value, mockKeywordData);
       expect(mockFindNextWords).toHaveBeenCalled();
       expect(mockFindNextWords).toHaveBeenCalledWith(mockKeywordData);
     });
