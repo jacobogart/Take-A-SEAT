@@ -29,13 +29,16 @@ class App extends Component {
     })
   }
 
-
   findNextWords = keywordData => {
-    let shallowNextWords = keywordData.nextWords || keywordData.starterWords;
+    let shallowNextWords =
+      keywordData.nextWords 
+      || keywordData.starterWords;
+    let editableKeywords = shallowNextWords;
     if (keywordData.word === "New Line") {
-      shallowNextWords = this.newLineTestRunner(shallowNextWords, newLineChecks);
+      editableKeywords = [...shallowNextWords]
+      editableKeywords = this.newLineTestRunner(editableKeywords, newLineChecks);
     }
-    let newNextWords = shallowNextWords.map(nextWord =>
+    let newNextWords = editableKeywords.map(nextWord =>
       this.state.keywords.find(keyword => keyword.word === nextWord)
     );
     
