@@ -4,7 +4,8 @@ class KeywordInfo extends Component {
   
   submitValue = e => {
     e.preventDefault();
-    this.props.selectWord(e.target.querySelector("input").value);
+    let value = e.target.querySelector("input").value;
+    this.props.selectWord(value, this.props.keywordData);
   }
 
   render() {

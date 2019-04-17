@@ -1,10 +1,10 @@
 import React from "react";
 import KeywordContainer from "../components/KeywordContainer";
 import { shallow } from "enzyme";
-import { keywords } from "../data-set";
 
 const mockChalkboardChecker = jest.fn();
 const mockFindNextWords = jest.fn();
+const mockKeywords = [];
 const mockNextWords = [{
   "word": "const",
   "nextWords": [
@@ -23,7 +23,7 @@ describe('KeywordContainer', () => {
   beforeEach(() => {
     wrapper = shallow(
       <KeywordContainer
-        keywords={keywords}
+        keywords={mockKeywords}
         chalkboardChecker={mockChalkboardChecker}
         nextWords={mockNextWords}
         findNextWords={mockFindNextWords}
