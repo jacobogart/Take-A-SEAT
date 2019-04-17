@@ -4,26 +4,33 @@ exports[`KeywordContainer should match snapshot 1`] = `
 <section
   className="KeywordContainer"
 >
-  <Keyword
-    chalkboardChecker={[MockFunction]}
-    key="100"
-    keywordData={
-      Object {
-        "details": "Declare a variable that cannot be reassigned",
-        "id": 100,
-        "isEditable": false,
-        "nextWords": Array [
-          "mockData Name",
-          "mockPropFunction",
-        ],
-        "phase": Array [
-          "S",
-        ],
-        "value": "const ",
-        "word": "const",
+  <p>
+    Click once for details, click again to select.
+  </p>
+  <div
+    className="button-holder"
+  >
+    <Keyword
+      chalkboardChecker={[MockFunction]}
+      findNextWords={[MockFunction]}
+      key="100"
+      keywordData={
+        Object {
+          "details": "Declare a variable that cannot be reassigned",
+          "id": 100,
+          "isEditable": false,
+          "nextWords": Array [
+            "mockData Name",
+            "mockPropFunction",
+          ],
+          "phase": Array [
+            "S",
+          ],
+          "value": "const ",
+          "word": "const",
+        }
       }
-    }
-    updateCurrentWord={[Function]}
-  />
+    />
+  </div>
 </section>
 `;

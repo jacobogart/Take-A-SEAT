@@ -1,8 +1,20 @@
 .KeywordContainer {
   grid-area: keywords;
-  padding: 100px 20px;
+  margin-left: 10px;
+  height: 100%;
+  p {
+    font-family: $script-font;
+    color: white;
+    margin: 20px;
+    font-size: 20px;
+  }
+}
+
+.button-holder{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   align-content: center;
+  height: 64vh;
 }

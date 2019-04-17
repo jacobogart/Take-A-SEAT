@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 class AcronymInfo extends Component {
+
   render() {
     return (
-      <div className="AcronymInfo">
+      <div className={`AcronymInfo stage${this.props.stageLetter}`}>
         <div>
           {this.props.stageName
             .split("")

@@ -4,14 +4,17 @@ import AcronymLetter from './AcronymLetter';
 class AcronymContainer extends Component {
   render() {
     return (
-      <section className="AcronymContainer">
-        {this.props.stages.map(stage =>
-          <AcronymLetter 
+      <section
+        className={`AcronymContainer welcome-${!this.props.showKeywords}`}
+      >
+        {this.props.stages &&
+          this.props.stages.map(stage => (
+          <AcronymLetter
             key={stage.id}
             stage={stage}
             findNextWords={this.props.findNextWords}
           />
-        )}
+        ))}
       </section>
     );
   }

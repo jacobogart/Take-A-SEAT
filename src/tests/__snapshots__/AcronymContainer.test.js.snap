@@ -2,7 +2,7 @@
 
 exports[`AcronymContainer should match snapshot 1`] = `
 <section
-  className="AcronymContainer"
+  className="AcronymContainer welcome-true"
 >
   <AcronymLetter
     findNextWords={[MockFunction]}
@@ -13,7 +13,7 @@ exports[`AcronymContainer should match snapshot 1`] = `
         "id": 1,
         "letter": "S",
         "name": "Setup",
-        "starterWords": Array [
+        "nextWords": Array [
           "describe",
           "let",
           "beforeEach",
@@ -32,7 +32,7 @@ exports[`AcronymContainer should match snapshot 1`] = `
         "id": 2,
         "letter": "E",
         "name": "Execution",
-        "starterWords": Array [
+        "nextWords": Array [
           "wrapper",
         ],
       }
@@ -47,7 +47,7 @@ exports[`AcronymContainer should match snapshot 1`] = `
         "id": 3,
         "letter": "A",
         "name": "Assertion",
-        "starterWords": Array [
+        "nextWords": Array [
           "expect",
         ],
       }
@@ -62,6 +62,9 @@ exports[`AcronymContainer should match snapshot 1`] = `
         "id": 4,
         "letter": "T",
         "name": "Tear Down",
+        "nextWords": Array [
+          "afterEach",
+        ],
       }
     }
   />

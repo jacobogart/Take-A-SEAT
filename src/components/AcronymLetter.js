@@ -16,19 +16,20 @@ class AcronymLetter extends Component {
   }
 
   render() {
-    let { letter, name, description, starterWords } = this.props.stage;
+    let { letter, name, description } = this.props.stage;
     return (
       <div
         className="letter"
         onMouseOver={this.toggleShowDetails}
         onMouseLeave={this.toggleShowDetails}
-        onClick={() => this.props.findNextWords(starterWords)}
+        onClick={() => this.props.findNextWords(this.props.stage)}
       >
         <h2>{letter}</h2>
         {this.state.showDetails && (
-          <AcronymInfo 
-            stageName={name} 
-            stageDescription={description} 
+          <AcronymInfo
+            stageName={name}
+            stageLetter={letter}
+            stageDescription={description}
           />
         )}
       </div>

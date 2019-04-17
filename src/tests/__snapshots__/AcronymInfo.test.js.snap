@@ -2,7 +2,7 @@
 
 exports[`AcronymInfo should match snapshot 1`] = `
 <div
-  className="AcronymInfo"
+  className="AcronymInfo stageundefined"
 >
   <div>
     <h3

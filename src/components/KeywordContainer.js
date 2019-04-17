@@ -1,33 +1,22 @@
 import React, { Component } from 'react';
 import Keyword from './Keyword'
-import '../css/KeywordContainer.scss';
 
 class KeywordContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentWord: null
-    };
-  }
-
-  updateCurrentWord = newWord => {
-    this.setState({
-      currentWord: newWord
-    });
-    this.props.findNextWords(newWord.nextWords);
-  };
 
   render() {
     return (
       <section className="KeywordContainer">
-        {this.props.nextWords.map(nextWord => (
-          <Keyword
-            key={nextWord.id}
-            keywordData={nextWord}
-            updateCurrentWord={this.updateCurrentWord}
-            chalkboardChecker={this.props.chalkboardChecker}
-          />
-        ))}
+        <p>Click once for details, click again to select.</p>
+        <div className="button-holder">
+          {this.props.nextWords.map(nextWord => (
+            <Keyword
+              key={nextWord.id}
+              keywordData={nextWord}
+              findNextWords={this.props.findNextWords}
+              chalkboardChecker={this.props.chalkboardChecker}
+            />
+          ))}
+        </div> 
       </section>
     );
   }

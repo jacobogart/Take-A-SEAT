@@ -2,7 +2,7 @@ import React from "react";
 import Keyword from "../components/Keyword";
 import { shallow } from "enzyme";
 
-const mockUpdateCurrentWord = jest.fn();
+const mockFindNextWords = jest.fn();
 const mockChalkboardChecker = jest.fn();
 const mockKeywordData = {
   "word": "wrapper",
@@ -26,7 +26,7 @@ describe('Keyword', () => {
       <Keyword
         key={mockKeywordData.id}
         keywordData={mockKeywordData}
-        updateCurrentWord={mockUpdateCurrentWord}
+        findNextWords={mockFindNextWords}
         chalkboardChecker={mockChalkboardChecker}
       />
     );
@@ -62,16 +62,16 @@ describe('Keyword', () => {
 
     it('should invoke updateCurrentWord if showDetails is true', () => {
       wrapper.instance().setState({ showDetails: true});
-      wrapper.instance().selectWord(mockValue);
-      expect(mockUpdateCurrentWord).toHaveBeenCalled();
-      expect(mockUpdateCurrentWord).toHaveBeenCalledWith(mockKeywordData);
+      wrapper.instance().selectWord(mockKeywordData);
+      expect(mockFindNextWords).toHaveBeenCalled();
+      expect(mockFindNextWords).toHaveBeenCalledWith(mockKeywordData);
     });
 
     it('should invoke chalkboardChecker if showDetails is true', () => {
       wrapper.instance().setState({ showDetails: true });
-      wrapper.instance().selectWord(mockValue);
+      wrapper.instance().selectWord(mockKeywordData);
       expect(mockChalkboardChecker).toHaveBeenCalled();
-      expect(mockChalkboardChecker).toHaveBeenCalledWith('const');
+      expect(mockChalkboardChecker).toHaveBeenCalledWith('wrapper');
     });
   })
 })

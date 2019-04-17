@@ -1,9 +1,30 @@
 .KeywordInfo {
-  width: 180px;
-  margin: 0 auto;
+  width: 190px;
+  margin: -20px 0 0 30px;
   background-image: url('../images/paper-background.jpg');
-  background-size: cover; 
+  font-family: $script-font;
+  padding: 8px 4px;
   p {
     display: inline-block;
+    font-size: 22px;
+    margin: 20px 0 0;
+    line-height: 25px;
+    color: black;
+  }
+  input {
+    margin-bottom: 6px;
+    border-color: #758DA3;
+    background-color: transparent;
+    font-family: "Lucida Console", Monaco, monospace;
+    width: 175px;
+  }
+  button {
+    height: 23px;
+    margin-top: -2px;
+    padding-top: 2px;
+    border: 3px solid #966362;;
+    border-radius: 10%;
+    background-color: #758DA3;
+    color: white;
   }
 }

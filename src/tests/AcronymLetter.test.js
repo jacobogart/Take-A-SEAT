@@ -53,13 +53,7 @@ describe('AcronymInfo', () => {
   it('should invoke findNextWords on click', () => {
     wrapper.find('.letter').simulate('click');
     expect(mockFindNextWords).toHaveBeenCalled();
-    expect(mockFindNextWords).toHaveBeenCalledWith([
-      "describe",
-      "let",
-      "beforeEach",
-      "it",
-      "const"
-    ]);
+    expect(mockFindNextWords).toHaveBeenCalledWith(mockStage);
   });
 
   it('should toggle showDetails when toggleShowDetails is invoked', () => {
