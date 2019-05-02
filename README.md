@@ -1,4 +1,4 @@
-# Testy
+# Take a SEAT
 An enzyme and jest test generator for beginner React developers. By building a test word by word, developers gain familiarity with the testing syntax and the tools at their disposal. 
 
 ![Acronym Screenshot](./src/images/acronym-screenshot.png)
